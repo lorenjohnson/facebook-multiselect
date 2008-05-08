@@ -208,7 +208,7 @@ var TextboxList = Class.create({
   
   createInput: function(options) {
     var li = new Element('li', {'class': this.options.get('className') + '-input'});
-    var el = new Element('input', Object.extend(options,{'type': 'text'}));
+    var el = new Element('input', Object.extend(options,{'type': 'text', 'autocomplete':'off'}));
     el.observe('click', function(e) { e.stop(); }).observe('focus', function(e) { if(! this.isSelfEvent('focus')) this.focus(li, true); }.bind(this)).observe('blur', function() { if(! this.isSelfEvent('blur')) this.blur(true); }.bind(this)).observe('keydown', function(e) { this.cacheData('lastvalue', this.value).cacheData('lastcaret', this.getCaretPosition()); });
     var tmp = li.cacheData('type', 'input').cacheData('input', el).insert(el);
     return tmp;
