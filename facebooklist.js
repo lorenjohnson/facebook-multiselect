@@ -470,7 +470,10 @@ var FacebookList = Class.create(TextboxList, {
             // Removed Ajax.Request from here and moved to initialize, 
             // now doesn't create server queries every search but only 
             // refreshes the list on initialize (page load) 
-            if(this.dosearch) this.autoShow(input.value);
+            if(this.searchTimeout) clearTimeout(this.searchTimeout);
+            this.searchTimeout = setTimeout(function(){
+              if(this.dosearch) this.autoShow(input.value);
+            }.bind(this), 250);
         }        
     }.bind(this));
     input.observe(Prototype.Browser.IE ? 'keydown' : 'keypress', function(e) { 
