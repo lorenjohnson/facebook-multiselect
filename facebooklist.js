@@ -435,7 +435,7 @@ var FacebookList = Class.create(TextboxList, {
             if(this.options.get('newValues')) {
               new_value_el = this.current.retrieveData('input');
               new_value_el.value = new_value_el.value.strip().gsub(",","");
-              if(!this.options.get("spaceReplace").blank()) new_value_el.gsub(" ", this.options.get("spaceReplace"));
+              if(!this.options.get("spaceReplace").blank()) new_value_el.value.gsub(" ", this.options.get("spaceReplace"));
               if(!new_value_el.value.blank()) {
                 e.stop();
                 this.newvalue = true;
